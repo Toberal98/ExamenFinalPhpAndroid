@@ -1,0 +1,17 @@
+create database examenFinalProgramacionMoviles;
+use examenFinalProgramacionMoviles;
+
+drop database examenFinalProgramacionMoviles;
+create table Factura(
+	idFactura int primary key not null auto_increment,
+	numeroFactura int null,
+	fechadeCompra date,
+	tipoCombustible varchar(25) not null,
+	montoCompra double not null,
+	km double not null
+);
+select * from Factura;
+insert into Factura(numeroFactura,fechadeCompra,tipoCombustible,montoCompra,km) values(1,'2008-7-04','Especial',20.00,900);
+insert into Factura(numeroFactura,fechadeCompra,tipoCombustible,montoCompra,km) values(2,'2008-6-10','Especial',20.00,900);
+insert into Factura(numeroFactura,fechadeCompra,tipoCombustible,montoCompra,km) values(3,'2008-5-14','Especial',20.00,900);
+insert into Factura(numeroFactura,fechadeCompra,tipoCombustible,montoCompra,km) values(4,'2008-4-15','Especial',20.00,900);
