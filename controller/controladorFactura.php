@@ -7,9 +7,9 @@ include_once("../model/modeloFactura.php");
         $Factura = new Factura();
 
         if($Factura->insertarFactura($numeroFactura,$fechaCompra,$tipoCombustible,$montoCompra,$txtKm)){
-        http_response_code(201);
+          echo "Se ingreso correctamente";
         }else{
-        http_response_code(400);
+        echo "Ocurrio un error";
         }
     }
 
@@ -20,12 +20,10 @@ include_once("../model/modeloFactura.php");
         if(mysqli_num_rows($res)>0){
           while($fila=mysqli_fetch_assoc($res)){
             $item=array(
-              "idFactura"=>$fila["idFactura"],
-              "numeroFactura"=>$fila["numeroFactura"],
-              "fechadeCompra"=>$fila["fechadeCompra"],
-              "tipoCombustible"=>$fila["tipoCombustible"],
-              "montoCompra"=>$fila["montoCompra"],
-              "km"=>$fila["km"],
+              "tipo"=>$fila["tipo"],
+              "montoPromedio"=>$fila["montoPromedio"],
+              "kmPromedio"=>$fila["kmPromedio"],
+              "fechaCompra"=>$fila["fechadeCompra"]
             );
             array_push($facturas["items"],$item);
           }
@@ -55,7 +53,7 @@ include_once("../model/modeloFactura.php");
             echo json_encode($filtradas);
           }
           else{
-            echo json_encode(array("mensaje"=>"No hay resultados"));
+            echo json_encode($filtradas);
           }
     }
 
@@ -78,7 +76,7 @@ include_once("../model/modeloFactura.php");
             echo json_encode($filtradas);
           }
           else{
-            echo json_encode(array("mensaje"=>"No hay resultados"));
+            echo json_encode($filtradas);
           }
     }
   }
